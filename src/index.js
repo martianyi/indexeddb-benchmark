@@ -22,7 +22,7 @@ function sleep(time) {
 (async () => {
   const dbName = "indexedb_benchmark";
   const storeName = "store0";
-  const version = 1; //versions start at 1
+  const version = 1;
 
   const db = await openDB(dbName, version, {
     upgrade(db, oldVersion, newVersion, transaction) {
@@ -35,27 +35,22 @@ function sleep(time) {
     }
   });
 
+  // generate large json data
   const data = [];
-  // looping for 1000000
   for (let n = 0; n < 1000000; n++) {
-    // creating object here
-    var obj = {
+    const obj = {
       name: "name_" + n,
       family: "family_" + n,
       age: "age_" + n,
       address: "address_" + n
     };
-
-    // pushing each object here in array
     data.push(obj);
   }
 
-  //var html = sb.join('');
-  //document.body.innerHTML = html;
   const type = "application/json";
-  let blob = new Blob([JSON.stringify(data)], { type: "application/json" });
-
+  const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   const arrBuffer = await blobToArrayBuffer(blob);
+  
   console.time("large file write test");
   const tx = db.transaction(storeName, "readwrite");
   for (let i = 0; i < 10; i++) {}
@@ -73,12 +68,11 @@ function sleep(time) {
   // keys.forEach(async key => {
   //   const item = await tx2.store.get(key);
   //   const blob = arrayBufferToBlob(item.data, item.type);
-  //   const fr = new FileReader();
-
-  //   fr.onload = function() {
+  //   const reader = new FileReader();
+  //   reader.onload = function() {
   //     console.log(JSON.parse(this.result));
   //   };
-  //   fr.readAsText(blob);
+  //   reader.readAsText(blob);
   // });
   // await tx2.done;
   // console.timeEnd("large file read test");

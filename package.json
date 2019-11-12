@@ -1,0 +1,27 @@
+{
+  "name": "indexeddb-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "serve test & webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martianyi/indexeddb-benchmark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martianyi/indexeddb-benchmark/issues"
+  },
+  "homepage": "https://github.com/martianyi/indexeddb-benchmark#readme",
+  "dependencies": {
+    "idb": "^4.0.5"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -35,7 +35,7 @@ function sleep(time) {
     }
   });
 
-  // generate large json data
+  // generate large json data, about 96MB
   const data = [];
   for (let n = 0; n < 1000000; n++) {
     const obj = {
@@ -50,15 +50,16 @@ function sleep(time) {
   const type = "application/json";
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   const arrBuffer = await blobToArrayBuffer(blob);
-  
+
   console.time("large file write test");
   const tx = db.transaction(storeName, "readwrite");
-  for (let i = 0; i < 10; i++) {}
-  tx.store.add({
-    data: arrBuffer,
-    type: type,
-    createdAt: Date.now()
-  });
+  for (let i = 0; i < 20; i++) {
+    tx.store.add({
+      data: arrBuffer,
+      type: type,
+      createdAt: Date.now()
+    });
+  }
   await tx.done;
   console.timeEnd("large file write test");
 

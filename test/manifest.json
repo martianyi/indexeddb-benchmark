@@ -1,0 +1,20 @@
+{
+  "name": "indexeddb-benchmark",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "indexeddb benchmark",
+  "homepage_url": "https://github.com/martianyi/indexeddb-benchmark",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "open test"
+  },
+  "permissions": ["tabs", "unlimitedStorage"]
+}

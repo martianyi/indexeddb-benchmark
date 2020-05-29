@@ -1,11 +1,14 @@
-# Indexeddb
+# indexeddb-benchmark
 
-## 生成大文件测试
+## Quick start
 
-```bash
-# masOS
-mkfile -n 96m temp_96m_file
-# linux
-fallocate -l 96M temp_96m_file
 ```
+npm i serve -g
+npm i
+npm start
+```
+
+用浏览器打开页面测试
+
+test文件夹是一个Chrome extension，可以在 chrome://extension 页面安装测试
 
